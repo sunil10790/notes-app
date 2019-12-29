@@ -1,6 +1,4 @@
-const fs = require('fs');
+const add = require('./utils.js');
 
-fs.writeFileSync('notes.txt', "I am Mogambo.");
-
-fs.appendFileSync('notes.txt', " I am awesome");
-
+const sum = add(5,-3)
+console.log(sum);
