@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sunil10790/notes-app#readme",
   "dependencies": {
+    "chalk": "^3.0.0",
     "validator": "^12.1.0"
   }
 }
