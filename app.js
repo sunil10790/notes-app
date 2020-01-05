@@ -3,16 +3,29 @@ const yargs = require('yargs');
 
 const getNotes = require('./notes.js');
 
-// console.log(process.argv);
-// console.log(yargs.argv);
 
 yargs.command({ 
     command: 'add',
     describe: 'Add a new note',
-    handler: function () {
+    builder: {
+        title: {
+            describe: "Note Title",
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: "Note Body",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
         console.log("Adding a new note!");
+        console.log("Note Title : " + argv.title);
+        console.log("Note Body : " + argv.body);
+
     }
-}).argv;
+});
 
 yargs.command({ 
     command: 'remove',
@@ -20,7 +33,7 @@ yargs.command({
     handler: function () {
         console.log("Removing a note!");
     }
-}).argv;
+});
 
 yargs.command({
     command: 'list',
@@ -28,7 +41,7 @@ yargs.command({
     handler: function() {
         console.log("Listing out all notes");
     }
-}).argv;
+});
 
 yargs.command({
     command: 'read',
@@ -36,11 +49,6 @@ yargs.command({
     handler: function() {
         console.log("Reading a note");
     }
-}).argv;
+});
 
-// const operation = process.argv[2];
-// if (operation === 'add') {
-//     console.log("Adding a note!");
-// } else if (operation === 'remove') {
-//     console.log("Removing a note!");
-// }
+yargs.parse();
