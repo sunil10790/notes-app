@@ -1,18 +1,23 @@
-// const fs = require('fs');
-// //fs.writeFileSync('notes.txt', 'This file is created and the text is added by node.js Awesomee!!');
-// fs.appendFileSync('notes.txt', ' We can also append text to an existing file! :o');
-
-const validator = require('validator');
 const chalk = require('chalk');
 const getNotes = require('./notes.js');
 
-// const note = getNotes();
-// console.log(note);
 
+console.log(process.argv);
 
-// console.log(validator.isEmail('a@a.com'));
+const command = process.argv[2];
 
+if(command === 'add') {
+    console.log('Adding Note')
+} else if(command === 'remove') {
+    console.log('Removing Note')
+}
 
-console.log(chalk.green('Success!'));
-const log = console.log;
-log(chalk.green.bold.inverse('Success!'));
+// node app.js add --title="This is a title"
+// Result: 
+// [
+//     '/Users/sunil/.nvm/versions/node/v14.17.4/bin/node',
+//     '/Users/sunil/git/notes-app/app.js',
+//     'add',
+//     '--title=This is a title'
+//   ]
+//   Adding Note
