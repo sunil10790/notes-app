@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
-const getNotes = require('./notes.js')
+const notes = require('./notes.js')
 
 
 // Change yargs version
@@ -14,7 +14,7 @@ yargs.command({
             describe: 'Note Title',
             demandOption: true,
             type: 'string'
-        },
+        }, 
         body: {
             describe: 'Note Body',
             demandOption: true,
@@ -22,8 +22,7 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        console.log("Title: ", argv.title)
-        console.log("Body: ", argv.body)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
@@ -52,27 +51,3 @@ yargs.command({
 })
 
 yargs.parse()
-
-
-// node app.js --help
-// app.js [command]
-// Commands:
-// app.js add     Add a new note
-// app.js remove  Remove a note
-// app.js list    List all notes
-// app.js read    Read a note
-// Options:
-// --help     Show help                                                 [boolean]
-// --version  Show version number                                       [boolean]
-
-// node app.js read  
-// Read a note
-
-// node app.js list  
-// Listing all the notes
-
-// node app.js remove
-// Removing a note
-
-// node app.js add   
-// Adding a new note
