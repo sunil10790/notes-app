@@ -27,7 +27,19 @@ const removeNote = (title) => {
         saveNotes(filteredNotes)
         console.log(chalk.green.inverse('Note deleted successfully'))
     } else {
-        console.log(chalk.red.inverse('No note found'))
+        console.log(chalk.red.inverse('Note not found'))
+    }
+}
+
+const listNotes = () => {
+    const notes = loadNotes();
+    if(notes.length > 0) {
+        console.log(chalk.yellow.bold.underline.inverse('Your Notes:'))
+        notes.forEach(note => {
+            console.log(chalk.green(note.title))
+        });
+    } else {
+        console.log(chalk.red.inverse("No notes found"));
     }
 }
 
@@ -50,5 +62,6 @@ const saveNotes = (notes) => {
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
