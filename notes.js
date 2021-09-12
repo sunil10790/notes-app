@@ -4,6 +4,7 @@ const chalk = require('chalk')
 const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNote = notes.find(note => note.title === title)
+    debugger
     if(!duplicateNote) {
         notes.push({
             title: title,
@@ -72,3 +73,11 @@ module.exports = {
     listNotes: listNotes,
     readNote: readNote
 }
+
+
+// Using Debugger
+// 1] 2] Use 'debugger' in the code
+// 2] Run the app with 'inspect'. Eg: node inspect add --title="t"
+// 3] In Chrome, open "chrome://inspect" and select the target - This opens chrome dev tool
+// 4] Add folder to workspace to add our code in the dev tools
+// 5] Once closed, run 'restart' in the terminal to start debugging again.
